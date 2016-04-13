@@ -1,0 +1,12 @@
+{
+    "name": "badou/1C-parser",
+    "description": "1c database parser",
+    "authors": [
+        {
+            "name": "Vyacheslav Goryachikh",
+            "email": "badou@yandex.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
