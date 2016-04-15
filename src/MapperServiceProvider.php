@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Badou\Parser\Mappers\CategoryMapper;
 use Badou\Parser\Mappers\ItemsMapper;
 use Badou\Parser\Mappers\ParamsMapper;
+use App\Models\CatalogCategory;
+
 
 class MapperServiceProvider extends ServiceProvider
 {
@@ -17,7 +19,7 @@ class MapperServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(CategoryMapper::class, function(){
-            return new CategoryMapper();
+            return new CategoryMapper(new CatalogCategory());
         });
 
         $this->app->bind(ItemsMapper::class, function(){

@@ -33,8 +33,8 @@ class Parser
 
     public function parse()
     {
-        $this->categoryMapper->parse();
-        $this->itemsMapper->parse();
-        $this->paramsMapper->parse();
+        $this->categoryMapper->parse($this->import);
+        $this->itemsMapper->parse($this->import);
+        $this->paramsMapper->parse($this->offer);
     }
 }

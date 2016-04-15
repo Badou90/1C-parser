@@ -4,5 +4,5 @@ namespace Badou\Parser\Mappers;
 
 interface MapperInterface
 {
-    public function parse();
+    public function parse($data);
 }

@@ -47,4 +47,12 @@ By default you adding `MapperServiceProvider` with some basic parsing functions.
         }
     }
 
-Then you can write your own code to parse your unique fields from xml file
+Then you can write your own code to parse your unique fields from xml file. Your custom mapper must extend one of three classes `CategoryMapper`, `ItemsMapper`, `ParamsMapper`:
+
+    class TestCategoryMapper extends CategoryMapper
+    {
+        public function parse($data)
+        {
+            echo "Test category mapper\n";
+        }
+    }
