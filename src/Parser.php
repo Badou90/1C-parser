@@ -8,20 +8,22 @@ use Badou\Parser\Mappers\ParamsMapper;
 
 class Parser
 {
-    protected $import;
-    protected $offer;
+    protected $import = null;
+    protected $offer = null;
 
-    protected $categoryMapper;
-    protected $itemsMapper;
-    protected $paramsMapper;
+    protected $categoryMapper = null;
+    protected $itemsMapper = null;
+    protected $paramsMapper = null;
 
     public function __construct(CategoryMapper $categoryMapper, ItemsMapper $itemsMapper, ParamsMapper $paramsMapper)
     {
-        if(!is_file(config('parser.files.import')))
+        if (!is_file(config('parser.files.import'))) {
             throw new \Exception("file {$import_file} not found");
+        }
 
-        if(!is_file(config('parser.files.offers')))
+        if (!is_file(config('parser.files.offers'))) {
             throw new \Exception("file {$offer_file} not found");
+        }
 
         $this->import = new \SimpleXMLElement(file_get_contents(config('parser.files.import')));
         $this->offer = new \SimpleXMLElement(file_get_contents(config('parser.files.offers')));
