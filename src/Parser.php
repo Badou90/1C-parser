@@ -2,9 +2,9 @@
 
 namespace Badou\Parser;
 
-use Badou\Parser\Mappers\CategoryMapper;
-use Badou\Parser\Mappers\ItemsMapper;
-use Badou\Parser\Mappers\ParamsMapper;
+use Badou\Parser\Mappers\CategoryMapperInterface;
+use Badou\Parser\Mappers\ItemsMapperInterface;
+use Badou\Parser\Mappers\ParamsMapperInterface;
 use Badou\Parser\Exceptions\FileNotFoundException;
 
 class Parser
@@ -16,7 +16,7 @@ class Parser
     protected $itemsMapper = null;
     protected $paramsMapper = null;
 
-    public function __construct(CategoryMapper $categoryMapper, ItemsMapper $itemsMapper, ParamsMapper $paramsMapper)
+    public function __construct(CategoryMapperInterface $categoryMapper, ItemsMapperInterface $itemsMapper, ParamsMapperInterface $paramsMapper)
     {
         $import_file = config('parser.files.import');
         $offer_file = config('parser.files.offers');
