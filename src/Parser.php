@@ -5,6 +5,7 @@ namespace Badou\Parser;
 use Badou\Parser\Mappers\CategoryMapper;
 use Badou\Parser\Mappers\ItemsMapper;
 use Badou\Parser\Mappers\ParamsMapper;
+use Badou\Parser\Exceptions\FileNotFoundException;
 
 class Parser
 {
@@ -17,12 +18,15 @@ class Parser
 
     public function __construct(CategoryMapper $categoryMapper, ItemsMapper $itemsMapper, ParamsMapper $paramsMapper)
     {
-        if (!is_file(config('parser.files.import'))) {
-            throw new \Exception("file {$import_file} not found");
+        $import_file = config('parser.files.import');
+        $offer_file = config('parser.files.offers');
+
+        if (is_file($import_file)) {
+            throw new FileNotFoundException("file \"{$import_file}\" not found");
         }
 
-        if (!is_file(config('parser.files.offers'))) {
-            throw new \Exception("file {$offer_file} not found");
+        if (!is_file($offer_file)) {
+            throw new FileNotFoundException("file \"{$offer_file}\" not found");
         }
 
         $this->import = new \SimpleXMLElement(file_get_contents(config('parser.files.import')));
