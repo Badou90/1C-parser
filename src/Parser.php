@@ -29,8 +29,8 @@ class Parser
             throw new FileNotFoundException("file \"{$offer_file}\" not found");
         }
 
-        $this->import = new \SimpleXMLElement(file_get_contents(config('parser.files.import')));
-        $this->offer = new \SimpleXMLElement(file_get_contents(config('parser.files.offers')));
+        $this->import = new \SimpleXMLElement(file_get_contents($import_file));
+        $this->offer = new \SimpleXMLElement(file_get_contents($offer_file));
 
         $this->categoryMapper = $categoryMapper;
         $this->itemsMapper = $itemsMapper;
