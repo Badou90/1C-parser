@@ -21,7 +21,7 @@ class Parser
         $import_file = config('parser.files.import');
         $offer_file = config('parser.files.offers');
 
-        if (is_file($import_file)) {
+        if (!is_file($import_file)) {
             throw new FileNotFoundException("file \"{$import_file}\" not found");
         }
 
