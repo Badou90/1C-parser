@@ -23,7 +23,7 @@ Finally, run `php artisan vendor:publish` from your command line to publish pack
 
 ## Categories
 
-If you choose to use default CategoryMapper, shipped with package, your Category model must have at least 3 fields - title, code, parent_id
+If you choose to use default CategoryMapper, shipped with package, your Category model must have at least 3 fields - `title`, `code`, `parent_id`
 
 ## Running parser
 
