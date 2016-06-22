@@ -14,9 +14,25 @@ class CategoryMapper implements MapperInterface
 
     public function parse($import)
     {
-        dd($this->model);
         foreach ($import->Классификатор->Группы->Группа as $group) {
-            echo $group->Наименование."\n";
+            $this->create($group);
         }
+    }
+
+    public function create($item, $parentId = 0)
+    {
+        $attributes = [
+            'title' => $item->Наименование,
+            'code' => $item->Ид,
+            'parent_id' => $parentId,
+        ];
+        $category = $this->model->create($attributes);
+
+        if(isset($item->Группы)) {
+            foreach($item->Группы->Группа as $group) {
+                $this->create($group, $category->id);
+            }
+        }
+
     }
 }
