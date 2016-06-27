@@ -1,19 +1,24 @@
 <?php
 
 namespace Badou\Parser\Mappers;
+
 use App\Models\CatalogCategory;
 
-class CategoryMapper implements MapperInterface
+class CategoryMapper implements CategoryMapperInterface
 {
     protected $model;
 
-    public function __construct(CatalogCategory $categoryModel)
+    public function __construct()
     {
-        $this->model = $categoryModel;
+        $this->model = new CatalogCategory();
     }
 
     public function parse($import)
     {
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        $this->model->truncate();
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         foreach ($import->Классификатор->Группы->Группа as $group) {
             $this->create($group);
         }
@@ -21,12 +26,11 @@ class CategoryMapper implements MapperInterface
 
     public function create($item, $parentId = 0)
     {
-        $attributes = [
+        $category = $this->model->create([
             'title' => $item->Наименование,
             'code' => $item->Ид,
             'parent_id' => $parentId,
-        ];
-        $category = $this->model->create($attributes);
+        ]);
 
         if(isset($item->Группы)) {
             foreach($item->Группы->Группа as $group) {

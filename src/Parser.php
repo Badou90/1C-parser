@@ -41,6 +41,6 @@ class Parser
     {
         $this->categoryMapper->parse($this->import);
         $this->itemsMapper->parse($this->import);
-        $this->paramsMapper->parse($this->offer);
+        // $this->paramsMapper->parse($this->offer);
     }
 }

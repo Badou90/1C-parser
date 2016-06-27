@@ -21,10 +21,6 @@ And this line to fasades section of `config/app.php` file:
 
 Finally, run `php artisan vendor:publish` from your command line to publish package configuration file and change path to parsing files in config file.
 
-## Categories
-
-If you choose to use default CategoryMapper, shipped with package, your Category model must have at least 3 fields - `title`, `code`, `parent_id`
-
 ## Running parser
 
 To parse your files all you need is simply run `php artisan parse:file` from your command line

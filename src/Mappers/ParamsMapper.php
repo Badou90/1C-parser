@@ -2,10 +2,10 @@
 
 namespace Badou\Parser\Mappers;
 
-class ParamsMapper implements MapperInterface
+class ParamsMapper implements ParamsMapperInterface
 {
     public function parse($offer)
     {
-        echo get_class($this)."\n";
+        echo self::class." - base mapper\n";
     }
 }
