@@ -2,9 +2,9 @@
 
 namespace Badou\Parser;
 
-use Badou\Parser\Mappers\CategoryMapperInterface;
-use Badou\Parser\Mappers\ItemsMapperInterface;
-use Badou\Parser\Mappers\ParamsMapperInterface;
+use Badou\Parser\Contracts\CategoryMapperInterface;
+use Badou\Parser\Contracts\ItemsMapperInterface;
+use Badou\Parser\Contracts\ParamsMapperInterface;
 use Badou\Parser\Exceptions\FileNotFoundException;
 
 class Parser
@@ -41,6 +41,6 @@ class Parser
     {
         $this->categoryMapper->parse($this->import);
         $this->itemsMapper->parse($this->import);
-        // $this->paramsMapper->parse($this->offer);
+        $this->paramsMapper->parse($this->offer);
     }
 }

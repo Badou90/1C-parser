@@ -2,6 +2,7 @@
 
 namespace Badou\Parser\Mappers;
 
+use Badou\Parser\Contracts\CategoryMapperInterface;
 use App\Models\CatalogCategory;
 
 class CategoryMapper implements CategoryMapperInterface

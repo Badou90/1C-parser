@@ -1,6 +1,6 @@
 <?php
 
-namespace Badou\Parser\Mappers;
+namespace Badou\Parser\Contracts;
 
 interface CategoryMapperInterface extends MapperInterface
 {

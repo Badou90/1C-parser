@@ -2,6 +2,7 @@
 
 namespace Badou\Parser\Mappers;
 
+use Badou\Parser\Contracts\ItemsMapperInterface;
 use App\Models\CatalogItem;
 use App\Models\CatalogCategory;
 
