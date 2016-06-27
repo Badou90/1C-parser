@@ -27,7 +27,7 @@ To parse your files all you need is simply run `php artisan parse:file` from you
 
 ## Overriding mappers
 
-By default you adding `MapperServiceProvider` with some basic parsing functions. If you wish to expand mappers you need to register new bindings in custom service provider.
+By default you will have `MapperServiceProvider` with some basic parsing functions. If you wish to extend mappers you need to register new bindings in custom service provider.
 
     class CustomMapperServiceProvider extends ServiceProvider
     {
