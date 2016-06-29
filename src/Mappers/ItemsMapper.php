@@ -20,14 +20,19 @@ class ItemsMapper implements ItemsMapperInterface
         // $this->model->truncate();
         foreach($import->Каталог->Товары->Товар as $item) {
             $categoryItem = CatalogCategory::where('code', $item->Группы->Ид)->first();
-
-            $this->model->create([
+            $attributes = [
                 'image' => '/images/main/item_default.png',
                 'title' => $item->Наименование,
                 'category_id' => $categoryItem->id,
                 'code' => $item->Ид,
                 'published' => 1,
-            ]);
+            ];
+
+            if($catalogItem = CatalogItem::where('code', $item->Ид)->first()) {
+                $catalogItem->update($attributes);
+            } else {
+                $this->model->create($attributes);
+            }
         }
     }
 }

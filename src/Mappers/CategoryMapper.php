@@ -27,11 +27,17 @@ class CategoryMapper implements CategoryMapperInterface
 
     public function create($item, $parentId = 0)
     {
-        $category = $this->model->create([
+        $attributes = [
             'title' => $item->Наименование,
             'code' => $item->Ид,
             'parent_id' => $parentId,
-        ]);
+        ];
+
+        if($category = CatalogCategory::where('code', $item->Ид)->first()) {
+            $category->update($attributes);
+        } else {
+            $category = $this->model->create($attributes);
+        }
 
         if(isset($item->Группы)) {
             foreach($item->Группы->Группа as $group) {
