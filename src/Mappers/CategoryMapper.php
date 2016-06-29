@@ -16,9 +16,9 @@ class CategoryMapper implements CategoryMapperInterface
 
     public function parse($import)
     {
-        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        $this->model->truncate();
-        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        // \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        // $this->model->truncate();
+        // \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         foreach ($import->Классификатор->Группы->Группа as $group) {
             $this->create($group);

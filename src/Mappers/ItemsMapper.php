@@ -17,11 +17,12 @@ class ItemsMapper implements ItemsMapperInterface
 
     public function parse($import)
     {
-        $this->model->truncate();
+        // $this->model->truncate();
         foreach($import->Каталог->Товары->Товар as $item) {
             $categoryItem = CatalogCategory::where('code', $item->Группы->Ид)->first();
 
             $this->model->create([
+                'image' => '/images/main/item_default.png',
                 'title' => $item->Наименование,
                 'category_id' => $categoryItem->id,
                 'code' => $item->Ид,
